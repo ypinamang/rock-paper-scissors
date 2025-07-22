@@ -10,12 +10,12 @@ CREATE a function that returns rock, paper, or scissors based on random number
 
 
 ## Get user choice and machine choice
-CREATE a variable to the user's choice
+CREATE a variable to store the user's choice
 CREATE a variable to store the machine's choice
-CALL machine choice function
-ASSIGN machine choice return value to the machine choice variable
+CALL the function that returns the machine's choice
+ASSIGN the machine's choice to the machine choice variable
 ASK the user for a choice between Rock, Paper, and Scissors
-ASSIGN the user value to the user choice variable
+ASSIGN the user's choice to the user choice variable
 
 
 
