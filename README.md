@@ -8,6 +8,14 @@ Note: The app does not use an array for the choices, so for the machine choice, 
 ## Generate and convert machine choice
 CREATE a function that returns rock, paper, or scissors based on random number
 
+GENERATE random number between 1 and 3
+IF random number is 1
+    RETURN "Rock"
+ELSE IF random number is 2
+    RETURN "Paper"
+ELSE
+    RETURN "Scissors"
+
 
 ## Get user choice and machine choice
 CREATE a variable to store the user's choice
@@ -17,6 +25,8 @@ ASSIGN the machine's choice to the machine choice variable
 ASK the user for a choice between Rock, Paper, and Scissors
 ASSIGN the user's choice to the user choice variable
 
+
+## Create a function to compare 
 
 
 
