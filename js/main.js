@@ -1,3 +1,4 @@
+// Create a function to generate the machine's choice
 function machineChoice() {
     // Generate random number between 1 and 3 
     const randomNum = Math.floor((Math.random() * 3) +1);
@@ -14,3 +15,5 @@ function machineChoice() {
 
 // test out function machineChoice() --> Should print Rock, Paper, or Scissors
 console.log(machineChoice());
+
+let userChoice, machineChoice;
