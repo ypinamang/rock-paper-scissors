@@ -13,11 +13,22 @@ function choose() {
     }
 }
 
-// test out function machineChoice() --> Should print Rock, Paper, or Scissors
-console.log(choose());
+// test out function choose() --> Should print Rock, Paper, or Scissors:
+// console.log(choose());
 
 let userChoice, machineChoice;
 
 // Generate machine choice and get user choice
-machineChoice = choose()
-userChoice = prompt("Rock, Paper, or Scissors");
+machineChoice = choose().toLowerCase();
+userChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
+
+/* 
+Up to this point, everything works as promised..but..
+Let's convert the value the user enters to lowerCase for better
+data handling. DONE with .toLowerCase()^^^
+*/
+
+// Test it here:
+console.log(`Machine chooses ${machineChoice}. User chooses ${userChoice}`);
+// All good
+
