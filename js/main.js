@@ -1,7 +1,7 @@
 // Create a function to generate the machine's choice
-function machineChoice() {
+function choose() {
     // Generate random number between 1 and 3 
-    const randomNum = Math.floor((Math.random() * 3) +1);
+    const randomNum = Math.floor((Math.random() * 3) + 1);
 
     // Convert random number to rock, paper, or scissors 
     if (randomNum == 1) {
@@ -14,6 +14,10 @@ function machineChoice() {
 }
 
 // test out function machineChoice() --> Should print Rock, Paper, or Scissors
-console.log(machineChoice());
+console.log(choose());
 
 let userChoice, machineChoice;
+
+// Generate machine choice and get user choice
+machineChoice = choose()
+userChoice = prompt("Rock, Paper, or Scissors");
