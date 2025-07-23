@@ -24,7 +24,7 @@ userChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
 
 /* 
 Up to this point, everything works as promised..but..
-Let's convert the value the user enters to lowerCase for better
+Let's convert the choice values to lowerCase for better
 data handling. DONE with .toLowerCase()^^^
 */
 
@@ -32,3 +32,8 @@ data handling. DONE with .toLowerCase()^^^
 console.log(`Machine chooses ${machineChoice}. User chooses ${userChoice}`);
 // All good
 
+// Variables to keep the user and machine score initialized to 0
+let userScore = 0;
+let machineScore = 0;
+
+//
