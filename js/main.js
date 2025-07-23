@@ -66,9 +66,9 @@ function userWon(playerChoice, computerChoice) { // No worries...variables in fu
 function playRound() {
     // First check if it was a draw. Then check if the user won. 
     // If the user won, then the machine lost.
-    if (draw(machineChoice, userChoice)) {
-        console.log("Draw");
-    } else if (userWon(machineChoice, userChoice)) {
+    if (draw(userChoice, machineChoice)) {
+        console.log("Draw 🤭");
+    } else if (userWon(userChoice, machineChoice)) {
         userScore += 1;
         console.log("You won! Hurray! 🥳");
     } else {
@@ -76,3 +76,6 @@ function playRound() {
         console.log("You lost! 😜")
     }
 }
+
+// Test the game. Play a around
+playRound();
