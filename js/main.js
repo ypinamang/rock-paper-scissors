@@ -36,4 +36,30 @@ console.log(`Machine chooses ${machineChoice}. User chooses ${userChoice}`);
 let userScore = 0;
 let machineScore = 0;
 
-//
+// Function to check for draw
+function draw(playerChoice, computerChoice) {
+    if (playerChoice == computerChoice) {
+        return true; 
+    } else {
+        return false;
+    }
+} 
+
+// Function to check if the user won
+function userWon(playerChoice, computerChoice) { // No worries...variables in functions have local scope
+    if (playerChoice == "rock") { // We can also use the AND operator but this feels more intuitive to me
+        if (computerChoice == "scissors") {
+            return true;
+        } else return false; // We already checked for draw so only two cases remain - scissors and paper
+    } else if (playerChoice == "paper") {
+        if (computerChoice == "rock") {
+            return true;
+        } else return false;  // next obvious option
+    } else if (playerChoice == "scissors") {
+        if (computerChoice == "paper") {
+            return true
+        } else return false;
+    }
+}
+
+
