@@ -67,7 +67,7 @@ ELSE IF the user won
     DISPLAY You won
 ELSE
     INCREASE machine score
-    DISPLAY YOu lost
+    DISPLAY You lost
 
 
 
