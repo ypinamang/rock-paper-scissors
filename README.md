@@ -59,7 +59,7 @@ CHECK for user win
             RETURN true
         
 
-## Create a function to play a round
+## Create a function to display winning, losing, or draw message
 IF it was a draw
     DISPLAY draw
 ELSE IF the user won
