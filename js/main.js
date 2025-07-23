@@ -62,4 +62,16 @@ function userWon(playerChoice, computerChoice) { // No worries...variables in fu
     }
 }
 
-
+// Function to play a round
+function playRound() {
+    // First check if it was a draw. Then check if the user won. 
+    // If the user won, then the machine lost.
+    if (draw(machineChoice, userChoice)) {
+        console.log("Draw");
+    } else if (userWon(machineChoice, userChoice)) {
+        console.log("You won! Hurray! 🥳");
+    } else {
+        machineScore += 1;
+        console.log("You lost! 😜")
+    }
+}
