@@ -69,6 +69,7 @@ function playRound() {
     if (draw(machineChoice, userChoice)) {
         console.log("Draw");
     } else if (userWon(machineChoice, userChoice)) {
+        userScore += 1;
         console.log("You won! Hurray! 🥳");
     } else {
         machineScore += 1;
