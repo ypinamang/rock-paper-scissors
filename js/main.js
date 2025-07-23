@@ -63,7 +63,7 @@ function userWon(playerChoice, computerChoice) { // No worries...variables in fu
 }
 
 // Function to play a round
-function playRound() {
+function decideWin() {
     // First check if it was a draw. Then check if the user won. 
     // If the user won, then the machine lost.
     if (draw(userChoice, machineChoice)) {
@@ -78,4 +78,3 @@ function playRound() {
 }
 
 // Test the game. Play a around
-playRound();
