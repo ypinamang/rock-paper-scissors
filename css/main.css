@@ -8,6 +8,8 @@
 
 body {
     background-color: hsl(0, 0%, 12%);
+    font-family: "Intel One Mono", monospace;
+    color:hsl(0, 0%, 100%)
 }
 
 .game-area {
@@ -25,18 +27,49 @@ body {
     border-right: 4px solid #ffffff;
 }
 
-#play-btn {
-    background: hsl(120, 88%, 33%);
-    color: hsl(0, 0%, 100%);
-    font-size: 20px;
-    padding: 10px;
-    margin-left: 90%;
-    cursor: pointer;
-    margin-top: 10px;
-    border: none;
-}
 
 .header {
-    height: 10vh;
+    height: 20vh;
     width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 32px;
 }
+
+
+.game-logo {
+    font-family: "Bitcount Single", system-ui;
+    color: hsl(0, 0%, 96%);
+    padding: 10px;
+    padding-top: 30px;
+    font-weight: 700;
+    font-size: inherit;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    flex-grow: 2;
+    margin-left: 24px;
+}
+
+
+#play-btn {
+    background: hsl(120, 93%, 34%);
+    color: hsl(0, 0%, 100%);
+    padding: 4px 16px;
+    font-weight: 700;
+    font-size: inherit;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 4px;
+    font-family: inherit;
+    margin-right: 24px;
+}
+
+.icon.play-icon {
+    width: 20px;
+    height: 20px;
+    color: hsl(0, 0%, 100%);
+    margin-right: 4px;
+}
+
