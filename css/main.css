@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: hsl(0, 0%, 12%);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.player-left-side, .machine-right-side {
+    flex-grow: 1;
+    
+}
+
+.player-left-side {
+    border-right: 4px solid #ffffff;
+}
+
+#play-btn {
+    background: hsl(120, 88%, 33%);
+    color: hsl(0, 0%, 100%);
+    font-size: 20px;
+    padding: 10px;
+    margin-left: 75%;
+    cursor: pointer;
+    margin-top: 10px;
+}
