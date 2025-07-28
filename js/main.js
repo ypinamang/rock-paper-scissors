@@ -94,3 +94,12 @@ let numOfRounds = prompt("How many rounds do you want to play?");
 numOfROunds = parseInt(numOfRounds);
 playGame(parseInt(numOfRounds));
 clearScore();
+
+// UI Design
+// images to load 
+const machineRockImg = "./images/rock-sign.png";
+const machinePaperImg = "./images/paper-sign.png";
+const machineScissorsImg = "./images/scissors-sign.png";
+const playerRockImg = "./images/rock-sign-2.png";
+const playerPaperImg = "./images/paper-sign-2.png";
+const playerScissorsImg = "./images/scissors-sign-2.png";
