@@ -6,35 +6,73 @@
     box-sizing: border-box;
 }
 
+body, html {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 body {
     background-color: hsl(0, 0%, 12%);
     font-family: "Intel One Mono", monospace;
-    color:hsl(0, 0%, 100%)
+    color: hsl(0, 0%, 100%)
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: flex-start;
+    width: 950px; 
+    height: 90vh;
+    background: hsl(0, 0%, 10%);
+    padding: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border-radius: 12px;
+    position: relative;
+
 }
 
 .game-area {
     display: flex;
     width: 100%;
-    height: 50vh;
+    height: 65%;
+    justify-content: center;
+    align-items: center;
+   
 }
 
-.player-left-side, .machine-right-side {
+.player-left-side,
+.machine-right-side {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    width: inherit;
     flex-grow: 1;
-    
+   
 }
+
+
 
 .player-left-side {
-    border-right: 4px solid #ffffff;
+    /*border-right: 4px solid #ffffff;*/
+    justify-content: flex-end;
 }
+
+.machine-right-side {
+    justify-content: flex-start;
+}
+
 
 
 .header {
     height: 20vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 32px;
+    font-size: 24px;
 }
 
 
@@ -71,5 +109,88 @@ body {
     height: 20px;
     color: hsl(0, 0%, 100%);
     margin-right: 4px;
+}
+
+
+
+em {
+    color: hsla(54, 100%, 55%, 0.807);
+}
+
+
+.machine-choice-container img, .player-choice-container img {
+    width: 250px;
+    height: 250px;
+
+
+}
+
+
+
+
+.machine-choice-container {
+    margin-left: 24px;
+
+}
+
+.player-choice-container {
+    margin-right: 24px;
+   
+}
+
+.player-options-container {
+    display: flex;
+    gap: 16px;
+}
+
+
+
+.rock-btn,
+.paper-btn,
+.scissors-btn {
+    background: hsla(0, 0%, 100%, 0.9);
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 0 10px hsla(180, 25%, 25%, 0.5);
+    border-radius: 4px;
+
+}
+
+.rock-btn:hover,
+.paper-btn:hover,
+.scissors-btn:hover {
+    background: hsl(0, 100%, 58%);
+    cursor: pointer;
+    
+}
+
+.rock-btn>img,
+.paper-btn>img,
+.scissors-btn>img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes slightRotation {
+    0% {
+        transform: rotate(-25deg);
+    }
+ 
+
+}
+
+@keyframes slightRotationLeft {
+    0% {
+        transform: rotate(25deg);
+    }
+  
+}
+
+.player-rotate {
+    animation: slightRotation 0.1s ease-in-out;
+}
+
+.machine-rotate {
+    animation: slightRotationLeft 0.1s ease-in-out;
 }
 

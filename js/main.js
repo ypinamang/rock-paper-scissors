@@ -1,5 +1,34 @@
+// Load image resources
+const machineRockImg = "./images/rock-sign.png";
+const machinePaperImg = "./images/paper-sign.png";
+const machineScissorsImg = "./images/scissors-sign.png";
+const playerRockImg = "./images/rock-sign-2.png";
+const playerPaperImg = "./images/paper-sign-2.png";
+const playerScissorsImg = "./images/scissors-sign-2.png";
+
+//Load sounds
+const airBlowEffect = document.querySelector("#blow-effect");
+const slashEffect = document.querySelector("#slash-effect");
+
+const playerChoiceImg = document.querySelector(".player-choice-container > img");
+const machineChoiceImg = document.querySelector(".machine-choice-container > img");
+const playerOptions = document.querySelector(".player-options-container");
+
+
+
+const playBtn = document.querySelector("#play-btn");
+playBtn.addEventListener("click", () => {
+  slashEffect.play();
+  playerOptions.style.visibility = "visible";
+  playerChoiceImg.style.visibility = "hidden";
+  machineChoiceImg.style.visibility = "hidden";
+  playBtn.style.visibility = "hidden";
+}
+);
+
+
 // Create a function to generate the machine's choice
-function choose() {
+function chooseForMachine() {
   // Generate random number between 1 and 3
   const randomNum = Math.floor(Math.random() * 3 + 1);
 
@@ -13,11 +42,9 @@ function choose() {
   }
 }
 
-// test out function choose() --> Should print Rock, Paper, or Scissors:
-// console.log(choose());
 
-// Function to check for draw
-function draw(playerChoice, computerChoice) {
+
+function isDraw(playerChoice, computerChoice) {
   if (playerChoice == computerChoice) {
     return true;
   } else {
@@ -49,20 +76,55 @@ let userScore = 0;
 let machineScore = 0;
 
 // Play a round and display the winner
-function playRound() {
-  // Generate machine choice and get user choice
-  let userChoice, machineChoice;
-  machineChoice = choose().toLowerCase();
-  userChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
-  let properChoice = (userChoice === "rock") || (userChoice === "paper") || (userChoice === "scissors") // Proper choices 
 
-  while(!properChoice) {
-    userChoice = prompt("Come on! Rock, Paper, or Scissors?"); // Make sure user enters proper choice
+  // Generate machine choice and get user choice
+  let machineChoice, userChoice;
+  playerChoiceImg.style.visibility = "hidden";
+  machineChoiceImg.style.visibility = "hidden";
+
+  
+  
+  // Use event delegation to handle click on user selection - Targets the img element of the buttons
+  playerOptions.addEventListener("click", (event) => {
+    airBlowEffect.play();
+    let target = event.target 
+    userChoice = target.id;
+    machineChoice = chooseForMachine().toLowerCase();
+    playerOptions.style.visibility = "hidden";
+
+    
+
+    switch(userChoice) {
+    case "rock":
+      console.log("user has clicked roockk")
+      playerChoiceImg.setAttribute("src", playerRockImg);
+      break;
+
+    case "paper":
+      playerChoiceImg.setAttribute("src", playerPaperImg);
+      displayMachineChoice();
+      break;
+
+    case "scissors":
+      playerChoiceImg.setAttribute("src", playerScissorsImg);
+      displayMachineChoice();
+      break;
+
+    default:
+      console.log("No selection made");
   }
   
+  animateChoices();
+  airBlowEffect.play();
+  playerChoiceImg.style.visibility = "visible";
+  machineChoiceImg.style.visibility = "visible";
+  playBtn.style.visibility = "visible";
+    
+    
+
   console.log(`Machine chooses ${machineChoice}. User chooses ${userChoice}`);
 
-  if (draw(userChoice, machineChoice)) {
+  if (isDraw(userChoice, machineChoice)) {
     console.log("Draw 🤭");
   } else if (userWon(userChoice, machineChoice)) {
     userScore += 1;
@@ -71,35 +133,35 @@ function playRound() {
     machineScore += 1;
     console.log("You lost! 😜");
   }
-}
 
-function playGame(numOfRounds) {
-  // Play n rounds
-  // Variables to keep the user and machine score initialized to 0
-  for (let i = 1; i <= numOfRounds; i++) {
-    playRound();
+  console.log(`${userScore} points for user.....${machineScore} points for machine `)
+  
+  
+
+});
+
+  function displayMachineChoice() {
+    switch(machineChoice) {
+    case "rock":
+      machineChoiceImg.setAttribute("src", machineRockImg);
+      break;
+
+    case "paper":
+      machineChoiceImg.setAttribute("src", machinePaperImg);
+      break;
+
+    case "scissors":
+      machineChoiceImg.setAttribute("src", machineScissorsImg);
+      break;
+  }
   }
 
-  console.log(`User score: ${userScore} | Machine score: ${machineScore}`)
-}
 
-function clearScore() {
-    userScore = 0;
-    machineScore = 0;
-}
-
-
-let numOfRounds = prompt("How many rounds do you want to play?");
-// Convert to integer number
-numOfROunds = parseInt(numOfRounds);
-playGame(parseInt(numOfRounds));
-clearScore();
-
-// UI Design
-// images to load 
-const machineRockImg = "./images/rock-sign.png";
-const machinePaperImg = "./images/paper-sign.png";
-const machineScissorsImg = "./images/scissors-sign.png";
-const playerRockImg = "./images/rock-sign-2.png";
-const playerPaperImg = "./images/paper-sign-2.png";
-const playerScissorsImg = "./images/scissors-sign-2.png";
+  function animateChoices() {
+  playerChoiceImg.classList.remove("player-rotate")
+  machineChoiceImg.classList.remove("machine-rotate");
+  playerChoiceImg.offsetWidth;
+  machineChoiceImg.offsetWidth;
+  playerChoiceImg.classList.add("player-rotate");
+  machineChoiceImg.classList.add("machine-rotate");
+  }

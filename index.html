@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <div class="game-wrapper">
     <div class="header">
       <div class="game-logo">Rock Paper Scissors - Boss Level 😎 🏆</div>
       <button id="play-btn"><img src="./images/play-icon.svg" alt="Play icon" class="icon play-icon">Play</button>
@@ -17,17 +18,35 @@
     </div>
     <div class="game-area">
     <div class="player-left-side">
+      <div class="player-options-container">
+        <div class="rock-btn">
+          <img src="./images/rock-upwards.png" alt="Rock upwards" id="rock">
+        </div>
+        <div class="paper-btn">
+          <img src="./images/paper-upwards.png" alt="Paper upwards" id="paper">
+        </div>
+        <div class="scissors-btn">
+          <img src="./images/scissors-upwards.png" alt="Scissors upwards" id="scissors">
+        </div>
+      </div>
       <div class="player-choice-container">
-        <img src="" alt="">
+        <img src="./images/scissors-sign-2.png" alt="">
       </div>
     </div>
     <div class="machine-right-side">
       <div class="machine-choice-container">
-        <img src="" alt="">
+        <img src="./images/rock-sign.png" alt="">
       </div>
     </div>
     </div>
 
-    <script></script>
+    <audio id="blow-effect">
+      <source src="./sound/air-blow.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="slash-effect">
+      <source src="./sound/slash.mp3" type="audio/mpeg">
+    </audio>
+</div>
+    <script src="./js/main.js"></script>
   </body>
 </html>
