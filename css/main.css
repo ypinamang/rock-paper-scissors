@@ -99,7 +99,7 @@ body {
     letter-spacing: 0.8px;
     cursor: pointer;
     line-height: 1;
-    border-radius: 4px;
+    border-radius: 12px;
     font-family: inherit;
     margin-right: 24px;
 }
@@ -140,7 +140,10 @@ em {
 
 .player-options-container {
     display: flex;
-    gap: 16px;
+    gap: 24px;
+    align-self: center;
+
+    
 }
 
 
@@ -149,11 +152,15 @@ em {
 .paper-btn,
 .scissors-btn {
     background: hsla(0, 0%, 100%, 0.9);
-    width: 50px;
-    height: 50px;
-    box-shadow: 0 0 10px hsla(180, 25%, 25%, 0.5);
-    border-radius: 4px;
+    width: 75px;
+    height: 75px;
+    box-shadow: inset 0 0 10px hsla(350, 70%, 48%, 0.5);
+    border-radius: 50%;
 
+}
+
+.rock-btn {
+    margin-left: 20px;
 }
 
 .rock-btn:hover,
@@ -186,6 +193,12 @@ em {
   
 }
 
+@keyframes slideUp {
+    0% {
+        transform: translateY(50%);
+    }
+}
+
 .player-rotate {
     animation: slightRotation 0.1s ease-in-out;
 }
@@ -194,3 +207,27 @@ em {
     animation: slightRotationLeft 0.1s ease-in-out;
 }
 
+.game-info-section {
+    align-self: center;
+}
+
+.green-text {
+    color: hsl(120, 100%, 54%);
+}
+
+.orange-text {
+    color: hsl(28, 83%, 50%);
+}
+
+.red-text {
+    color: hsl(0, 100%, 50%);
+}
+
+.green-text, .orange-text, .red-text {
+    font-weight: 700;
+    font-size: 32px;
+    box-shadow: 0 0 10px hsl(168, 64%, 33%);
+    padding: 8px;
+    border-radius: 12px;
+    animation: slideUp 0.3s ease-out;
+}
