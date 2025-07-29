@@ -149,7 +149,7 @@ em {
     background: hsla(0, 0%, 100%, 0.9);
     width: 100px;
     height: 100px;
-    box-shadow: inset 0 0 10px hsla(350, 70%, 48%, 0.5);
+    box-shadow: inset 0 0 8px hsla(350, 70%, 48%, 0.5);
     border-radius: 50%;
 
 }
@@ -230,3 +230,25 @@ em {
     animation: slideUp 0.3s ease-out;
 }
 
+.score-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 24px;
+}
+
+.machine-score {
+    margin-right: 32px;
+}
+
+.player-score {
+    margin-left: 40px;
+}
+
+#player-score-text, #machine-score-text {
+    color:hsl(41, 83%, 50%);   
+}
+
+.player-options-container, .score-section {
+    visibility: hidden;
+}
