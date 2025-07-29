@@ -6,22 +6,24 @@ const playerRockImg = "./images/rock-sign-2.png";
 const playerPaperImg = "./images/paper-sign-2.png";
 const playerScissorsImg = "./images/scissors-sign-2.png";
 
+
 //Load sounds
 const airBlowEffect = document.querySelector("#blow-effect");
 const slashEffect = document.querySelector("#slash-effect");
 
+let numberOfRoundsPlayed = 0;
+
 const playerChoiceImg = document.querySelector(".player-choice-container > img");
 const machineChoiceImg = document.querySelector(".machine-choice-container > img");
-const playerOptions = document.querySelector(".player-options-container");
+const gamingButtons = document.querySelectorAll(".gaming-button");
 
 const gameInfoDisplay = document.querySelector(".game-info-section");
 
 const playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener("click", () => {
+  console.log(`${numberOfRoundsPlayed}  rounds played`);
   slashEffect.play();
-  playerOptions.style.visibility = "visible";
-  playerChoiceImg.style.visibility = "hidden";
-  machineChoiceImg.style.visibility = "hidden";
+  hideChoiceImages();
   playBtn.style.visibility = "hidden";
   resetGameInfoDisplay();
 }
@@ -78,81 +80,84 @@ let machineScore = 0;
 
 // Play a round and display the winner
 
-  // Generate machine choice and get user choice
-  let machineChoice, userChoice;
-  playerChoiceImg.style.visibility = "hidden";
-  machineChoiceImg.style.visibility = "hidden";
+// Generate machine choice and get user choice
+let machineChoice, userChoice;
+hideGamingButtons();
+// playerChoiceImg.style.visibility = "hidden";
+// machineChoiceImg.style.visibility = "hidden";
 
-  
-  
-  // Use event delegation to handle click on user selection - Targets the img element of the buttons
-  playerOptions.addEventListener("click", (event) => {
+
+
+// Use event delegation to handle click on user selection - Targets the img element of the buttons
+gamingButtons.forEach(button => {
+  button.addEventListener("click", (event) => {
+    playBtn.textContent = "Restart Game";
+
+    numberOfRoundsPlayed += 1;
     airBlowEffect.play();
-    let target = event.target 
+    let target = event.target
     userChoice = target.id;
     machineChoice = chooseForMachine().toLowerCase();
-    playerOptions.style.visibility = "hidden";
 
-    
 
-    switch(userChoice) {
-    case "rock":
-      console.log("user has clicked roockk")
-      playerChoiceImg.setAttribute("src", playerRockImg);
-      displayMachineChoice();
-      break;
 
-    case "paper":
-      playerChoiceImg.setAttribute("src", playerPaperImg);
-      displayMachineChoice();
-      break;
 
-    case "scissors":
-      playerChoiceImg.setAttribute("src", playerScissorsImg);
-      displayMachineChoice();
-      break;
+    switch (userChoice) {
+      case "rock":
+        console.log("user has clicked roockk")
+        playerChoiceImg.setAttribute("src", playerRockImg);
+        displayMachineChoice();
+        break;
 
-    default:
-      console.log("No selection made");
-  }
-  
-  animateChoices();
-  airBlowEffect.play();
-  playerChoiceImg.style.visibility = "visible";
-  machineChoiceImg.style.visibility = "visible";
-  playBtn.style.visibility = "visible";
-    
-    
+      case "paper":
+        playerChoiceImg.setAttribute("src", playerPaperImg);
+        displayMachineChoice();
+        break;
 
-  console.log(`Machine chooses ${machineChoice}. User chooses ${userChoice}`);
+      case "scissors":
+        playerChoiceImg.setAttribute("src", playerScissorsImg);
+        displayMachineChoice();
+        break;
 
-  if (isDraw(userChoice, machineChoice)) {
-    console.log("Draw 🤭");
-    resetGameInfoDisplay();
-    gameInfoDisplay.classList.add("orange-text")
-    gameInfoDisplay.textContent = "Draw 🤭...that was close"
-  } else if (userWon(userChoice, machineChoice)) {
-    userScore += 1;
-    console.log("You won! Hurray! 🥳");
-    resetGameInfoDisplay();
-    gameInfoDisplay.classList.add("green-text")
-    gameInfoDisplay.textContent = "You won! 🥳"
-  } else {
-    machineScore += 1;
-    console.log("You lost! 😜");
-    resetGameInfoDisplay();
-    gameInfoDisplay.classList.add("red-text")
-    gameInfoDisplay.textContent = "You lost! 😜";
-  }
+      default:
+        console.log("No selection made");
+    }
 
-  console.log(`${userScore} points for user.....${machineScore} points for machine `)
-  
-  
+    animateChoices();
+    airBlowEffect.play();
+    showChoiceImages();
+    showPlayButton();
 
+
+
+    console.log(`Machine chooses ${machineChoice}. User chooses ${userChoice}`);
+
+    if (isDraw(userChoice, machineChoice)) {
+      console.log("Draw 🤭");
+      resetGameInfoDisplay();
+      gameInfoDisplay.classList.add("orange-text")
+      gameInfoDisplay.textContent = "Draw 🤭"
+    } else if (userWon(userChoice, machineChoice)) {
+      userScore += 1;
+      console.log("You won! Hurray! 🥳");
+      resetGameInfoDisplay();
+      gameInfoDisplay.classList.add("green-text")
+      gameInfoDisplay.textContent = "You won! 🥳"
+    } else {
+      machineScore += 1;
+      console.log("You lost! 😜");
+      resetGameInfoDisplay();
+      gameInfoDisplay.classList.add("red-text")
+      gameInfoDisplay.textContent = "You lost! 😜";
+    }
+
+    console.log(`${userScore} points for user.....${machineScore} points for machine `)
+
+  })
 });
 
-  function displayMachineChoice() {
-    switch(machineChoice) {
+function displayMachineChoice() {
+  switch (machineChoice) {
     case "rock":
       machineChoiceImg.setAttribute("src", machineRockImg);
       break;
@@ -165,22 +170,59 @@ let machineScore = 0;
       machineChoiceImg.setAttribute("src", machineScissorsImg);
       break;
   }
-  }
+}
 
 
-  function animateChoices() {
+function animateChoices() {
   playerChoiceImg.classList.remove("player-rotate")
   machineChoiceImg.classList.remove("machine-rotate");
   playerChoiceImg.offsetWidth;
   machineChoiceImg.offsetWidth;
   playerChoiceImg.classList.add("player-rotate");
   machineChoiceImg.classList.add("machine-rotate");
-  }
+}
 
-  function resetGameInfoDisplay() {
-    gameInfoDisplay.classList.remove("orange-text");
-    gameInfoDisplay.classList.remove("green-text");
-    gameInfoDisplay.classList.remove("red-text");
-    gameInfoDisplay.offsetWidth;
-    gameInfoDisplay.textContent = "";
+function resetGameInfoDisplay() {
+  gameInfoDisplay.classList.remove("orange-text");
+  gameInfoDisplay.classList.remove("green-text");
+  gameInfoDisplay.classList.remove("red-text");
+  gameInfoDisplay.offsetWidth;
+  gameInfoDisplay.textContent = "";
+}
+
+function restartGame() {
+  numberOfRoundsPlayed = 0;
+}
+
+function showChoiceImages() {
+  machineChoiceImg.style.visibility = "visible";
+  playerChoiceImg.style.visibility = "visible";
+}
+
+function hideChoiceImages() {
+  machineChoiceImg.style.visibility = "hidden";
+  playerChoiceImg.style.visibility = "hidden";
+}
+
+function showGamingButtons() {
+  gamingButtons.forEach(button => button.style.visibility = "visible");
+
+}
+
+function hideGamingButtons() {
+  gamingButtons.forEach(button => button.style.visibility = "hidden");
+}
+
+function showPlayButton() {
+  if (numberOfRoundsPlayed > 0) {
+    playBtn.textContent = "Restart Game";
+  } else {
+    playBtn.textContent = "Begin Game";
   }
+  playBtn.style.visibility = "visible";
+
+}
+
+function hidePlayButton() {
+  playBtn.style.visibility = "hidden";
+}
