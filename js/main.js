@@ -15,12 +15,13 @@ let numberOfRoundsPlayed = 0;
 
 const playerChoiceImg = document.querySelector(".player-choice-container > img");
 const machineChoiceImg = document.querySelector(".machine-choice-container > img");
-const gamingButtons = document.querySelectorAll(".gaming-button");
+const gamingButtons = document.querySelectorAll(".gaming-btn");
 
 const gameInfoDisplay = document.querySelector(".game-info-section");
 
 const playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener("click", () => {
+  restartGame();
   console.log(`${numberOfRoundsPlayed}  rounds played`);
   slashEffect.play();
   hideChoiceImages();
@@ -82,25 +83,21 @@ let machineScore = 0;
 
 // Generate machine choice and get user choice
 let machineChoice, userChoice;
-hideGamingButtons();
 // playerChoiceImg.style.visibility = "hidden";
 // machineChoiceImg.style.visibility = "hidden";
 
 
 
 // Use event delegation to handle click on user selection - Targets the img element of the buttons
-gamingButtons.forEach(button => {
-  button.addEventListener("click", (event) => {
-    playBtn.textContent = "Restart Game";
-
+gamingButtons.forEach((gamingButton) => {
+  gamingButton.addEventListener("click", (event) => {
+    console.log("I was clicked as button");
     numberOfRoundsPlayed += 1;
-    airBlowEffect.play();
-    let target = event.target
+    showPlayButton();
+    let target = event.target;
     userChoice = target.id;
+    console.log("Button clicked");
     machineChoice = chooseForMachine().toLowerCase();
-
-
-
 
     switch (userChoice) {
       case "rock":
@@ -122,9 +119,15 @@ gamingButtons.forEach(button => {
       default:
         console.log("No selection made");
     }
+   
+    // Sound effect with error handling
+    airBlowEffect.pause();
+    airBlowEffect.currentTime = 0;
+    airBlowEffect.play().catch(error => {
+      console.error("Playback failure: ", error)
+  });
 
     animateChoices();
-    airBlowEffect.play();
     showChoiceImages();
     showPlayButton();
 
@@ -151,7 +154,8 @@ gamingButtons.forEach(button => {
       gameInfoDisplay.textContent = "You lost! 😜";
     }
 
-    console.log(`${userScore} points for user.....${machineScore} points for machine `)
+    console.log(`${userScore} points for user.....${machineScore} points for machine. ${numberOfRoundsPlayed} 
+      rounds so far`);
 
   })
 });
