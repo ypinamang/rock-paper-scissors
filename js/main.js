@@ -22,6 +22,7 @@ const gameInfoDisplay = document.querySelector(".game-info-section");
 const playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener("click", () => {
   restartGame();
+  showGamingButtons();
   console.log(`${numberOfRoundsPlayed}  rounds played`);
   slashEffect.play();
   hideChoiceImages();
@@ -83,8 +84,7 @@ let machineScore = 0;
 
 // Generate machine choice and get user choice
 let machineChoice, userChoice;
-// playerChoiceImg.style.visibility = "hidden";
-// machineChoiceImg.style.visibility = "hidden";
+hideGamingButtons();
 
 
 
