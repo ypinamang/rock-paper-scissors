@@ -34,38 +34,6 @@ body {
 
 }
 
-.game-area {
-    display: flex;
-    width: 100%;
-    height: 65%;
-    justify-content: center;
-    align-items: center;
-   
-}
-
-.player-left-side,
-.machine-right-side {
-    display: flex;
-    align-items: center;
-    height: inherit;
-    width: inherit;
-    flex-grow: 1;
-   
-}
-
-
-
-.player-left-side {
-    border-right: 4px solid #ffffff;
-    justify-content: flex-end;
-}
-
-.machine-right-side {
-    justify-content: flex-start;
-}
-
-
-
 .header {
     height: 20vh;
     width: 100%;
@@ -75,7 +43,6 @@ body {
     font-size: 24px;
     margin-bottom: 32px;
 }
-
 
 .game-logo {
     font-family: "Bitcount Single", system-ui;
@@ -89,7 +56,6 @@ body {
     flex-grow: 2;
     margin-left: 24px;
 }
-
 
 #play-btn {
     background: hsl(120, 93%, 34%);
@@ -108,33 +74,15 @@ body {
 .icon.play-icon {
     width: 20px;
     height: 20px;
-    color: hsl(0, 0%, 100%);
-    margin-right: 4px;
+    margin-right: 8px;
 }
 
-
-
-em {
-    color: hsla(54, 100%, 55%, 0.807);
-}
-
-
-.machine-choice-container img, .player-choice-container img {
-    width: 250px;
-    height: 250px;
-
-
-}
-
-
-.machine-choice-container {
-    margin-left: 24px;
-
-}
-
-.player-choice-container {
-    margin-right: 24px;
-   
+.game-area {
+    display: flex;
+    width: 100%;
+    height: 65%;
+    justify-content: center;
+    align-items: center;
 }
 
 .player-options-container {
@@ -172,6 +120,43 @@ em {
     width: 100%;
     height: 100%;
 }
+
+.player-left-side,
+.machine-right-side {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+    flex-grow: 1;
+   
+}
+
+.player-left-side {
+    border-right: 4px solid #ffffff;
+    justify-content: flex-end;
+}
+
+.machine-right-side {
+    justify-content: flex-start;
+}
+
+.machine-choice-container {
+    margin-left: 24px;
+
+}
+
+.player-choice-container {
+    margin-right: 24px;
+   
+}
+
+.machine-choice-container img, .player-choice-container img {
+    width: 250px;
+    height: 250px;
+}
+
+
+
 
 @keyframes slightRotation {
     0% {
