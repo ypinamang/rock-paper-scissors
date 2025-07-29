@@ -73,6 +73,7 @@ body {
     justify-content: space-between;
     align-items: baseline;
     font-size: 24px;
+    margin-bottom: 32px;
 }
 
 
@@ -126,8 +127,6 @@ em {
 }
 
 
-
-
 .machine-choice-container {
     margin-left: 24px;
 
@@ -140,20 +139,16 @@ em {
 
 .player-options-container {
     display: flex;
-    gap: 24px;
+    gap: 48px;
     align-self: center;
-
-    
 }
-
-
 
 .rock-btn,
 .paper-btn,
 .scissors-btn {
     background: hsla(0, 0%, 100%, 0.9);
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     box-shadow: inset 0 0 10px hsla(350, 70%, 48%, 0.5);
     border-radius: 50%;
 
@@ -209,6 +204,7 @@ em {
 
 .game-info-section {
     align-self: center;
+    margin-bottom: 24px;
 }
 
 .green-text {
@@ -226,8 +222,11 @@ em {
 .green-text, .orange-text, .red-text {
     font-weight: 700;
     font-size: 32px;
-    box-shadow: 0 0 10px hsl(168, 64%, 33%);
+    font-family: "Goldman", sans-serif;
+    line-height: 1;
+    letter-spacing: 0.1em;
     padding: 8px;
     border-radius: 12px;
     animation: slideUp 0.3s ease-out;
 }
+
