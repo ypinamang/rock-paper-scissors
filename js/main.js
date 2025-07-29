@@ -14,7 +14,7 @@ const playerChoiceImg = document.querySelector(".player-choice-container > img")
 const machineChoiceImg = document.querySelector(".machine-choice-container > img");
 const playerOptions = document.querySelector(".player-options-container");
 
-
+const gameInfoDisplay = document.querySelector(".game-info-section");
 
 const playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener("click", () => {
@@ -23,6 +23,7 @@ playBtn.addEventListener("click", () => {
   playerChoiceImg.style.visibility = "hidden";
   machineChoiceImg.style.visibility = "hidden";
   playBtn.style.visibility = "hidden";
+  resetGameInfoDisplay();
 }
 );
 
@@ -98,6 +99,7 @@ let machineScore = 0;
     case "rock":
       console.log("user has clicked roockk")
       playerChoiceImg.setAttribute("src", playerRockImg);
+      displayMachineChoice();
       break;
 
     case "paper":
@@ -126,12 +128,21 @@ let machineScore = 0;
 
   if (isDraw(userChoice, machineChoice)) {
     console.log("Draw 🤭");
+    resetGameInfoDisplay();
+    gameInfoDisplay.classList.add("orange-text")
+    gameInfoDisplay.textContent = "Draw 🤭...that was close"
   } else if (userWon(userChoice, machineChoice)) {
     userScore += 1;
     console.log("You won! Hurray! 🥳");
+    resetGameInfoDisplay();
+    gameInfoDisplay.classList.add("green-text")
+    gameInfoDisplay.textContent = "You won! 🥳"
   } else {
     machineScore += 1;
     console.log("You lost! 😜");
+    resetGameInfoDisplay();
+    gameInfoDisplay.classList.add("red-text")
+    gameInfoDisplay.textContent = "You lost! 😜";
   }
 
   console.log(`${userScore} points for user.....${machineScore} points for machine `)
@@ -164,4 +175,12 @@ let machineScore = 0;
   machineChoiceImg.offsetWidth;
   playerChoiceImg.classList.add("player-rotate");
   machineChoiceImg.classList.add("machine-rotate");
+  }
+
+  function resetGameInfoDisplay() {
+    gameInfoDisplay.classList.remove("orange-text");
+    gameInfoDisplay.classList.remove("green-text");
+    gameInfoDisplay.classList.remove("red-text");
+    gameInfoDisplay.offsetWidth;
+    gameInfoDisplay.textContent = "";
   }
