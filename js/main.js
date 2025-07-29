@@ -11,6 +11,7 @@ const playerScissorsImg = "./images/scissors-sign-2.png";
 const airBlowEffect = document.querySelector("#blow-effect");
 const slashEffect = document.querySelector("#slash-effect");
 
+
 let numberOfRoundsPlayed = 0;
 
 const playerChoiceImg = document.querySelector(".player-choice-container > img");
@@ -18,11 +19,15 @@ const machineChoiceImg = document.querySelector(".machine-choice-container > img
 const gamingButtons = document.querySelectorAll(".gaming-btn");
 
 const gameInfoDisplay = document.querySelector(".game-info-section");
+const scoreDisplay = document.querySelector(".score-section");
+const playerScoreText = document.querySelector("#player-score-text");
+const machineScoreText = document.querySelector("#machine-score-text");
 
 const playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener("click", () => {
   restartGame();
   showGamingButtons();
+  showScoreDisplay();
   console.log(`${numberOfRoundsPlayed}  rounds played`);
   slashEffect.play();
   hideChoiceImages();
@@ -77,15 +82,14 @@ function userWon(playerChoice, computerChoice) {
 }
 
 
-let userScore = 0;
+let playerScore = 0;
 let machineScore = 0;
 
-// Play a round and display the winner
-
+// When the page opens
 // Generate machine choice and get user choice
 let machineChoice, userChoice;
 hideGamingButtons();
-
+hideScoreDisplay();
 
 
 // Use event delegation to handle click on user selection - Targets the img element of the buttons
@@ -141,7 +145,7 @@ gamingButtons.forEach((gamingButton) => {
       gameInfoDisplay.classList.add("orange-text")
       gameInfoDisplay.textContent = "Draw 🤭"
     } else if (userWon(userChoice, machineChoice)) {
-      userScore += 1;
+      playerScore += 1;
       console.log("You won! Hurray! 🥳");
       resetGameInfoDisplay();
       gameInfoDisplay.classList.add("green-text")
@@ -153,8 +157,10 @@ gamingButtons.forEach((gamingButton) => {
       gameInfoDisplay.classList.add("red-text")
       gameInfoDisplay.textContent = "You lost! 😜";
     }
-
-    console.log(`${userScore} points for user.....${machineScore} points for machine. ${numberOfRoundsPlayed} 
+ 
+    playerScoreText.textContent = playerScore;
+    machineScoreText.textContent = machineScore;
+    console.log(`${playerScore} points for user.....${machineScore} points for machine. ${numberOfRoundsPlayed} 
       rounds so far`);
 
   })
@@ -196,6 +202,8 @@ function resetGameInfoDisplay() {
 
 function restartGame() {
   numberOfRoundsPlayed = 0;
+  playerScore = 0;
+  machineScore = 0;
 }
 
 function showChoiceImages() {
@@ -229,4 +237,12 @@ function showPlayButton() {
 
 function hidePlayButton() {
   playBtn.style.visibility = "hidden";
+}
+
+function hideScoreDisplay() {
+  scoreDisplay.style.visibility = "hidden";
+}
+
+function showScoreDisplay() {
+  scoreDisplay.style.visibility = "visible";
 }
