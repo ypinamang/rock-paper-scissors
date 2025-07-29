@@ -202,8 +202,7 @@ function resetGameInfoDisplay() {
 
 function restartGame() {
   numberOfRoundsPlayed = 0;
-  playerScore = 0;
-  machineScore = 0;
+  initializeScores();
 }
 
 function showChoiceImages() {
@@ -245,4 +244,11 @@ function hideScoreDisplay() {
 
 function showScoreDisplay() {
   scoreDisplay.style.visibility = "visible";
+}
+
+function initializeScores () {
+  playerScoreText.textContent = 0;
+  machineScoreText.textContent = 0;
+  playerScore = 0;
+  machineScore = 0;
 }
